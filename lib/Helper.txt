@@ -1,0 +1,22 @@
+for google oAuth:
+always make web Application for web clientId - paste it in supabase dashbord with client secrets,
+also make ANDROID client, keep it their... no need to use it anywhere in flutter app.
+
+add this in android mainfest.xml:
+<!-- 🔑 SUPABASE GOOGLE OAUTH DEEP LINK (REQUIRED) -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                    android:scheme="com.example.todo_notes"
+                    android:host="login-callback"/>
+            </intent-filter>
+
+
+on supabase Dashbord:
+Authentication -> URL configuration -> Redirect URl...
+add :  your package name://login-callback
+example: com.example.todo_notes://login-callback
